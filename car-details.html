@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vehicle Details | Velocity Motors</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-[#0b0f19] text-gray-100 flex flex-col min-h-screen">
+
+  <!-- TOP BAR -->
+  <div class="bg-gray-950/80 border-b border-gray-800 text-xs text-gray-400 py-2 hidden md:block">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+      <div class="flex items-center space-x-6">
+        <span><i class="fa-solid fa-location-dot text-amber-500 mr-2"></i>742 Evergreen Blvd, Beverly Hills, CA</span>
+        <span><i class="fa-solid fa-clock text-amber-500 mr-2"></i>Mon - Sat: 9:00 AM - 8:00 PM</span>
+        <span><i class="fa-solid fa-phone text-amber-500 mr-2"></i>+1 (800) 555-2277</span>
+      </div>
+      <div class="flex items-center space-x-4">
+        <span class="text-amber-400 font-medium">VIP Concierge Ready</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVIGATION BAR -->
+  <header class="sticky top-0 z-50 glass-header">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-3 group">
+          <div class="w-11 h-11 rounded-xl bg-gradient-amber flex items-center justify-center text-gray-950 shadow-lg shadow-amber-500/20 group-hover:scale-105 transition transform">
+            <i class="fa-solid fa-gauge-high text-xl"></i>
+          </div>
+          <div>
+            <span class="font-heading text-2xl font-extrabold tracking-wider text-white">VELOCITY</span>
+            <span class="font-heading text-2xl font-extrabold tracking-wider text-amber-500">MOTORS</span>
+            <p class="text-[10px] tracking-widest text-gray-400 uppercase font-medium">Luxury & Exotic Collection</p>
+          </div>
+        </a>
+
+        <!-- Desktop Nav Links -->
+        <nav class="hidden md:flex items-center space-x-8">
+          <a href="index.html" class="nav-link text-sm font-medium hover:text-amber-400 transition py-1">Home</a>
+          <a href="cars.html" class="nav-link text-sm font-medium hover:text-amber-400 transition py-1">Inventory</a>
+          <a href="services.html" class="nav-link text-sm font-medium hover:text-amber-400 transition py-1">Services & Finance</a>
+          <a href="about.html" class="nav-link text-sm font-medium hover:text-amber-400 transition py-1">About Us</a>
+          <a href="contact.html" class="nav-link text-sm font-medium hover:text-amber-400 transition py-1">Contact</a>
+        </nav>
+
+        <!-- CTA & Actions -->
+        <div class="hidden md:flex items-center space-x-4">
+          <button onclick="openTestDriveModal()" class="px-5 py-2.5 rounded-xl bg-gradient-amber text-gray-950 font-bold text-sm hover:shadow-lg hover:shadow-amber-500/25 transform hover:-translate-y-0.5 transition flex items-center gap-2">
+            <i class="fa-solid fa-calendar-check"></i> Book Test Drive
+          </button>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <div class="md:hidden flex items-center">
+          <button id="mobile-menu-toggle" class="p-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 focus:outline-none">
+            <i class="fa-solid fa-bars text-2xl"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE NAVIGATION DRAWER -->
+  <div id="mobile-menu" class="fixed inset-0 z-50 bg-gray-950/95 backdrop-blur-xl hidden flex-col p-6">
+    <div class="flex justify-between items-center pb-6 border-b border-gray-800">
+      <div class="flex items-center gap-2">
+        <span class="font-heading text-xl font-bold text-white">VELOCITY <span class="text-amber-500">MOTORS</span></span>
+      </div>
+      <button id="mobile-menu-close" class="p-2 text-gray-400 hover:text-white text-2xl">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="flex flex-col space-y-4 py-8 text-lg font-medium">
+      <a href="index.html" class="hover:text-amber-500 transition py-2 border-b border-gray-900">Home</a>
+      <a href="cars.html" class="hover:text-amber-500 transition py-2 border-b border-gray-900">Inventory</a>
+      <a href="services.html" class="hover:text-amber-500 transition py-2 border-b border-gray-900">Services & Financing</a>
+      <a href="about.html" class="hover:text-amber-500 transition py-2 border-b border-gray-900">About Us</a>
+      <a href="contact.html" class="hover:text-amber-500 transition py-2 border-b border-gray-900">Contact Us</a>
+    </div>
+  </div>
+
+  <!-- BREADCRUMB -->
+  <div class="bg-gray-950/50 border-b border-gray-800/80 py-3 text-xs text-gray-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center space-x-2">
+      <a href="index.html" class="hover:text-amber-400">Home</a>
+      <span>/</span>
+      <a href="cars.html" class="hover:text-amber-400">Inventory</a>
+      <span>/</span>
+      <span id="car-breadcrumb-name" class="text-amber-500 font-semibold truncate">Vehicle Details</span>
+    </div>
+  </div>
+
+  <!-- MAIN DETAILS CONTENT -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-1">
+    
+    <!-- Title & Pricing Bar -->
+    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-8 border-b border-gray-800 mb-8">
+      <div>
+        <div class="flex items-center gap-3 mb-2">
+          <span id="car-status" class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">In Stock</span>
+          <span id="car-year" class="px-2.5 py-1 rounded-full text-xs font-semibold bg-gray-800 text-gray-300">2024</span>
+          <span id="car-rating" class="text-xs text-gray-400"></span>
+        </div>
+        <h1 id="car-title" class="font-heading text-3xl sm:text-5xl font-extrabold text-white">Loading Vehicle...</h1>
+      </div>
+
+      <div class="flex flex-col sm:flex-row lg:flex-col items-start lg:items-end justify-between gap-2">
+        <div class="text-xs font-semibold uppercase tracking-wider text-gray-400">Showroom Price</div>
+        <div id="car-price" class="font-heading text-4xl sm:text-5xl font-black text-amber-400">$0</div>
+        <span class="text-xs text-emerald-400"><i class="fa-solid fa-circle-check mr-1"></i>Verified Clear Title & CARFAX</span>
+      </div>
+    </div>
+
+    <!-- Gallery & Purchase Summary Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-14">
+      
+      <!-- Visual Gallery (2 Cols) -->
+      <div class="lg:col-span-2 space-y-4">
+        <!-- Main Image -->
+        <div class="w-full h-[400px] sm:h-[520px] rounded-2xl overflow-hidden glass-card border border-gray-800 relative shadow-2xl">
+          <img id="car-main-img" src="" alt="Vehicle Main" class="w-full h-full object-cover transition-opacity duration-300">
+        </div>
+
+        <!-- Thumbnails -->
+        <div id="car-thumbs" class="flex gap-4">
+          <!-- Thumbnails injected via JS -->
+        </div>
+      </div>
+
+      <!-- Quick Action & Concierge Sidebar (1 Col) -->
+      <div class="space-y-6">
+        <div class="glass-card rounded-2xl p-6 border border-gray-800 space-y-4 shadow-xl">
+          <h3 class="font-heading font-bold text-lg text-white">Purchase & Concierge</h3>
+          <p class="text-xs text-gray-400">Reserve this vehicle online with full refund guarantee within 48 hours.</p>
+
+          <div class="space-y-3 pt-2">
+            <button id="car-test-drive-btn" class="w-full py-3.5 rounded-xl bg-gradient-amber text-gray-950 font-bold text-sm hover:shadow-lg hover:shadow-amber-500/25 transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-calendar-check"></i> Schedule Test Drive
+            </button>
+
+            <a href="contact.html?subject=Inquiry" class="w-full py-3 rounded-xl bg-gray-800 hover:bg-gray-700 text-white font-semibold text-xs border border-gray-700 transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-envelope"></i> Request Specialist Callback
+            </a>
+
+            <a href="tel:+18005552277" class="w-full py-3 rounded-xl bg-emerald-950/40 hover:bg-emerald-900/50 text-emerald-400 font-semibold text-xs border border-emerald-800/50 transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-phone"></i> Call Showroom: (800) 555-CARS
+            </a>
+          </div>
+
+          <div class="pt-4 border-t border-gray-800 text-xs space-y-2 text-gray-400">
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-truck-fast text-amber-500"></i> Free enclosed shipping within 500 miles
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-shield-halved text-amber-500"></i> 1-Year Velocity Certified Warranty
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-arrow-rotate-left text-amber-500"></i> 7-Day Money Back Guarantee
+            </div>
+          </div>
+        </div>
+
+        <!-- Vehicle Highlights Card -->
+        <div class="glass-card rounded-2xl p-6 border border-gray-800">
+          <h4 class="font-heading font-bold text-sm text-white uppercase tracking-wider mb-3">Vehicle Overview</h4>
+          <p id="car-description" class="text-sm text-gray-300 leading-relaxed">
+            Loading vehicle description...
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- TECHNICAL SPECIFICATIONS SECTION -->
+    <section class="mb-14">
+      <div class="mb-6">
+        <span class="text-amber-500 font-semibold text-xs uppercase tracking-wider">Engineered Excellence</span>
+        <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-white mt-1">Full Technical Specifications</h2>
+      </div>
+
+      <div id="car-specs-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+        <!-- Injected via JS -->
+      </div>
+    </section>
+
+    <!-- KEY FEATURES & OPTIONS -->
+    <section class="mb-14">
+      <div class="mb-6">
+        <span class="text-amber-500 font-semibold text-xs uppercase tracking-wider">Bespoke Appointments</span>
+        <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-white mt-1">Standard & Optional Equipment</h2>
+      </div>
+
+      <div id="car-features-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Injected via JS -->
+      </div>
+    </section>
+
+    <!-- INTERACTIVE EMI / PAYMENT CALCULATOR -->
+    <section class="glass-card rounded-3xl p-8 lg:p-12 border border-gray-800 mb-14 shadow-2xl">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+        
+        <div>
+          <span class="text-amber-500 font-semibold text-xs uppercase tracking-wider">Financing Simulator</span>
+          <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-white mt-1">
+            Calculate Your Monthly Payment
+          </h2>
+          <p class="text-sm text-gray-400 mt-2">
+            Tailor your down payment and financing term to estimate your monthly investment. Tier 1 credit rates shown.
+          </p>
+
+          <div class="space-y-6 mt-8">
+            <!-- Down Payment -->
+            <div>
+              <div class="flex justify-between items-center text-xs mb-2">
+                <label class="font-semibold text-gray-300">Down Payment</label>
+                <span id="emi-down-display" class="font-bold text-amber-400 text-sm">$0</span>
+              </div>
+              <input type="range" id="emi-down-payment" min="0" max="100000" step="1000" value="20000" class="w-full h-2 bg-gray-700 rounded-lg cursor-pointer">
+            </div>
+
+            <!-- Interest Rate -->
+            <div>
+              <div class="flex justify-between items-center text-xs mb-2">
+                <label class="font-semibold text-gray-300">Annual Interest Rate (APR)</label>
+                <span id="emi-interest-display" class="font-bold text-amber-400 text-sm">5.9%</span>
+              </div>
+              <input type="range" id="emi-interest" min="2.9" max="14.9" step="0.1" value="5.9" class="w-full h-2 bg-gray-700 rounded-lg cursor-pointer">
+            </div>
+
+            <!-- Loan Term -->
+            <div>
+              <label class="block text-xs font-semibold text-gray-300 mb-2">Financing Term</label>
+              <select id="emi-term" class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500">
+                <option value="36">36 Months (3 Years)</option>
+                <option value="48">48 Months (4 Years)</option>
+                <option value="60" selected>60 Months (5 Years)</option>
+                <option value="72">72 Months (6 Years)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Result Box -->
+        <div class="bg-gray-900/90 rounded-2xl p-8 border border-amber-500/30 text-center flex flex-col justify-center items-center">
+          <span class="text-xs font-semibold uppercase tracking-wider text-gray-400">Estimated Monthly Payment</span>
+          <div id="emi-monthly-result" class="font-heading text-4xl sm:text-6xl font-black text-amber-400 my-4">
+            $0/mo
+          </div>
+          <div id="emi-total-loan" class="text-xs text-gray-400 mb-6">
+            Principal Financed: $0
+          </div>
+          <a href="services.html#financing" class="px-8 py-3.5 rounded-xl bg-gradient-amber text-gray-950 font-bold text-sm hover:shadow-lg transition">
+            Apply For Pre-Approval Online
+          </a>
+          <span class="text-[10px] text-gray-500 mt-4">*Taxes, registration fees, and optional extended protections not included. Subject to credit approval.</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SIMILAR / RELATED VEHICLES -->
+    <section>
+      <div class="flex justify-between items-end mb-8">
+        <div>
+          <span class="text-amber-500 font-semibold text-xs uppercase tracking-wider">Showroom Recommendations</span>
+          <h2 class="font-heading text-2xl sm:text-3xl font-bold text-white mt-1">Similar Exceptional Models</h2>
+        </div>
+        <a href="cars.html" class="text-xs text-amber-400 hover:text-amber-300 font-semibold">View All →</a>
+      </div>
+
+      <div id="related-cars-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Injected via JS -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- GLOBAL TEST DRIVE MODAL -->
+  <div id="test-drive-modal" class="fixed inset-0 z-50 modal-backdrop hidden items-center justify-center p-4">
+    <div class="glass-card max-w-lg w-full rounded-2xl p-6 sm:p-8 border border-gray-700 relative animate-fade-in">
+      <button id="close-test-drive-modal" class="absolute top-5 right-5 text-gray-400 hover:text-white text-xl">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="flex items-center gap-3 mb-5">
+        <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-500 flex items-center justify-center text-lg">
+          <i class="fa-solid fa-calendar-check"></i>
+        </div>
+        <div>
+          <h3 class="font-heading font-bold text-xl text-white">Schedule A Test Drive</h3>
+          <p class="text-xs text-gray-400">Experience this vehicle on the open road</p>
+        </div>
+      </div>
+
+      <form id="test-drive-form" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-gray-300 mb-1">Vehicle of Choice</label>
+          <input type="text" id="modal-car-name" class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-amber-500" placeholder="e.g. Mercedes-Benz S580">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-gray-300 mb-1">Your Full Name</label>
+            <input type="text" id="modal-user-name" required class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-amber-500" placeholder="John Doe">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-gray-300 mb-1">Phone Number</label>
+            <input type="tel" id="modal-phone" required class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-amber-500" placeholder="+1 (555) 000-0000">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-gray-300 mb-1">Preferred Date</label>
+            <input type="date" id="modal-date" required class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-amber-500">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-gray-300 mb-1">Preferred Time</label>
+            <select class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-amber-500">
+              <option>10:00 AM - Morning</option>
+              <option>01:00 PM - Afternoon</option>
+              <option>04:00 PM - Evening</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-gray-300 mb-1">Driver's License Status</label>
+          <div class="flex items-center gap-2 text-xs text-gray-400">
+            <input type="checkbox" required id="license-chk" class="accent-amber-500 w-4 h-4 rounded">
+            <label for="license-chk">I have a valid driver's license and am 21+ years of age</label>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-amber text-gray-950 font-bold text-sm hover:shadow-lg hover:shadow-amber-500/25 transition mt-2">
+          Confirm Test Drive Reservation
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-950 border-t border-gray-800/80 pt-16 pb-12 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-gray-800">
+        
+        <div class="lg:col-span-2 space-y-4">
+          <a href="index.html" class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-gradient-amber flex items-center justify-center text-gray-950 font-bold">
+              <i class="fa-solid fa-gauge-high"></i>
+            </div>
+            <span class="font-heading text-2xl font-bold tracking-wider text-white">VELOCITY <span class="text-amber-500">MOTORS</span></span>
+          </a>
+          <p class="text-gray-400 text-sm leading-relaxed max-w-sm">
+            Curating the finest pedigree of luxury sedans, exotic supercars, and premium electric vehicles. Certified multi-point inspection and nationwide white-glove transport.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-heading font-bold text-white text-sm uppercase tracking-wider mb-4">Inventory</h4>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li><a href="cars.html" class="hover:text-amber-400 transition">All Vehicles</a></li>
+            <li><a href="cars.html?body=Sedan" class="hover:text-amber-400 transition">Luxury Sedans</a></li>
+            <li><a href="cars.html?body=SUV" class="hover:text-amber-400 transition">Performance SUVs</a></li>
+            <li><a href="cars.html?body=Coupe" class="hover:text-amber-400 transition">Sports Coupes</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-heading font-bold text-white text-sm uppercase tracking-wider mb-4">Services</h4>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li><a href="services.html#financing" class="hover:text-amber-400 transition">Financing & Lease</a></li>
+            <li><a href="services.html#trade-in" class="hover:text-amber-400 transition">Trade-in Appraisal</a></li>
+            <li><a href="services.html#warranty" class="hover:text-amber-400 transition">Extended Warranty</a></li>
+            <li><a href="contact.html" class="hover:text-amber-400 transition">Book Test Drive</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-heading font-bold text-white text-sm uppercase tracking-wider mb-4">VIP Newsletter</h4>
+          <p class="text-xs text-gray-400 mb-3">Be first to know about private inventory releases and new arrivals.</p>
+          <form id="newsletter-form" class="space-y-2">
+            <input type="email" required placeholder="Enter your email" class="w-full bg-gray-900 border border-gray-800 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-500">
+            <button type="submit" class="w-full py-2.5 rounded-xl bg-gradient-amber text-gray-950 font-bold text-xs hover:shadow-lg transition">Subscribe</button>
+          </form>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-gray-500 gap-4">
+        <div>&copy; 2026 Velocity Motors LLC. All rights reserved. Designed with automotive passion.</div>
+        <div class="flex space-x-6">
+          <a href="#" class="hover:text-gray-400 transition">Privacy Policy</a>
+          <a href="#" class="hover:text-gray-400 transition">Terms of Sale</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/car-details.js"></script>
+</body>
+</html>

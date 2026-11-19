@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us & Showroom | Velocity Motors</title>
+  <meta name="description" content="Visit Velocity Motors showroom in Beverly Hills or reach out to our client concierge for acquisitions, test drives, or inquiries.">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-[#0b0f19] text-gray-100 flex flex-col min-h-screen">
+
+  <!-- TOP BAR -->
+  <div class="bg-gray-950/80 border-b border-gray-800 text-xs text-gray-400 py-2 hidden md:block">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+      <div class="flex items-center space-x-6">
+        <span><i class="fa-solid fa-location-dot text-amber-500 mr-2"></i>742 Evergreen Blvd, Beverly Hills, CA</span>
+        <span><i class="fa-solid fa-clock text-amber-500 mr-2"></i>Mon - Sat: 9:00 AM - 8:00 PM</span>
+        <span><i class="fa-solid fa-phone text-amber-500 mr-2"></i>+1 (800) 555-2277</span>
+      </div>
+      <div class="flex items-center space-x-4">
+        <span class="text-amber-400 font-medium">Concierge Online 24/7</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVIGATION BAR -->
+  <header class="sticky top-0 z-50 glass-header">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <a href="index.html" class="flex items-center gap-3 group">
+          <div class="w-11 h-11 rounded-xl bg-gradient-amber flex items-center justify-center text-gray-950 shadow-lg shadow-amber-500/20 group-hover:scale-105 transition transform">
+            <i class="fa-solid fa-gauge-high text-xl"></i>
+          </div>
+          <div>
+            <span class="font-heading text-2xl font-extrabold tracking-wider text-white">VELOCITY</span>
+            <span class="font-heading text-2xl font-extrabold tracking-wider text-amber-500">MOTORS</span>
+            <p class="text-[10px] tracking-widest text-gray-400 uppercase font-medium">Luxury & Exotic Collection</p>
+          </div>
+        </a>
+
+        <nav class="hidden md:flex items-center space-x-8">
+          <a href="index.html" class="nav-link text-sm font-medium hover:text-amber-400 transition py-1">Home</a>
+          <a href="cars.html" class="nav-link text-sm font-medium hover:text-amber-400 transition py-1">Inventory</a>
+          <a href="services.html" class="nav-link text-sm font-medium hover:text-amber-400 transition py-1">Services & Finance</a>
+          <a href="about.html" class="nav-link text-sm font-medium hover:text-amber-400 transition py-1">About Us</a>
+          <a href="contact.html" class="nav-link text-sm font-medium hover:text-amber-400 transition py-1">Contact</a>
+        </nav>
+
+        <div class="hidden md:flex items-center space-x-4">
+          <button onclick="openTestDriveModal()" class="px-5 py-2.5 rounded-xl bg-gradient-amber text-gray-950 font-bold text-sm hover:shadow-lg hover:shadow-amber-500/25 transform hover:-translate-y-0.5 transition flex items-center gap-2">
+            <i class="fa-solid fa-calendar-check"></i> Book Test Drive
+          </button>
+        </div>
+
+        <div class="md:hidden flex items-center">
+          <button id="mobile-menu-toggle" class="p-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 focus:outline-none">
+            <i class="fa-solid fa-bars text-2xl"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE NAVIGATION DRAWER -->
+  <div id="mobile-menu" class="fixed inset-0 z-50 bg-gray-950/95 backdrop-blur-xl hidden flex-col p-6">
+    <div class="flex justify-between items-center pb-6 border-b border-gray-800">
+      <div class="flex items-center gap-2">
+        <span class="font-heading text-xl font-bold text-white">VELOCITY <span class="text-amber-500">MOTORS</span></span>
+      </div>
+      <button id="mobile-menu-close" class="p-2 text-gray-400 hover:text-white text-2xl">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="flex flex-col space-y-4 py-8 text-lg font-medium">
+      <a href="index.html" class="hover:text-amber-500 transition py-2 border-b border-gray-900">Home</a>
+      <a href="cars.html" class="hover:text-amber-500 transition py-2 border-b border-gray-900">Inventory</a>
+      <a href="services.html" class="hover:text-amber-500 transition py-2 border-b border-gray-900">Services & Financing</a>
+      <a href="about.html" class="hover:text-amber-500 transition py-2 border-b border-gray-900">About Us</a>
+      <a href="contact.html" class="hover:text-amber-500 transition py-2 border-b border-gray-900">Contact Us</a>
+    </div>
+  </div>
+
+  <!-- HEADER BANNER -->
+  <div class="bg-gradient-to-b from-gray-950 to-[#0b0f19] border-b border-gray-800 py-16 text-center">
+    <div class="max-w-4xl mx-auto px-4">
+      <span class="text-amber-500 font-semibold text-xs uppercase tracking-wider">Direct Concierge Access</span>
+      <h1 class="font-heading text-4xl sm:text-5xl font-extrabold text-white mt-2 leading-tight">
+        Connect With Velocity Motors
+      </h1>
+      <p class="text-gray-400 text-base mt-4 max-w-2xl mx-auto">
+        Whether you are acquiring your next rare collector piece, inquiring about financing, or scheduling a private gallery consultation, we are at your service.
+      </p>
+    </div>
+  </div>
+
+  <!-- MAIN CONTACT CONTENT -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-20 flex-1">
+    
+    <!-- 4 CONTACT CARDS -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      
+      <!-- Card 1 -->
+      <div class="glass-card p-6 rounded-2xl border border-gray-800">
+        <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center text-lg mb-4">
+          <i class="fa-solid fa-location-dot"></i>
+        </div>
+        <h4 class="font-heading font-bold text-white text-base">Showroom Address</h4>
+        <p class="text-xs text-gray-400 mt-2 leading-relaxed">
+          742 Evergreen Blvd, Suite 100<br>
+          Beverly Hills, CA 90210
+        </p>
+        <a href="#map" class="text-xs font-semibold text-amber-400 hover:text-amber-300 mt-3 inline-block">View Location Map ↓</a>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="glass-card p-6 rounded-2xl border border-gray-800">
+        <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center text-lg mb-4">
+          <i class="fa-solid fa-phone"></i>
+        </div>
+        <h4 class="font-heading font-bold text-white text-base">Direct Lines</h4>
+        <p class="text-xs text-gray-400 mt-2 leading-relaxed">
+          Toll-Free: +1 (800) 555-CARS<br>
+          Concierge: +1 (310) 555-0199
+        </p>
+        <a href="tel:+18005552277" class="text-xs font-semibold text-amber-400 hover:text-amber-300 mt-3 inline-block">Call Sales Team →</a>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="glass-card p-6 rounded-2xl border border-gray-800">
+        <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center text-lg mb-4">
+          <i class="fa-solid fa-envelope"></i>
+        </div>
+        <h4 class="font-heading font-bold text-white text-base">Electronic Inquiries</h4>
+        <p class="text-xs text-gray-400 mt-2 leading-relaxed">
+          sales@velocitymotors.com<br>
+          concierge@velocitymotors.com
+        </p>
+        <a href="mailto:sales@velocitymotors.com" class="text-xs font-semibold text-amber-400 hover:text-amber-300 mt-3 inline-block">Send Email →</a>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="glass-card p-6 rounded-2xl border border-gray-800">
+        <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center text-lg mb-4">
+          <i class="fa-solid fa-clock"></i>
+        </div>
+        <h4 class="font-heading font-bold text-white text-base">Showroom Hours</h4>
+        <p class="text-xs text-gray-400 mt-2 leading-relaxed">
+          Mon - Sat: 9:00 AM - 8:00 PM<br>
+          Sunday: By Appointment Only
+        </p>
+        <span class="text-xs text-emerald-400 font-semibold mt-3 inline-block">Private Viewings Available</span>
+      </div>
+
+    </div>
+
+    <!-- CONTACT FORM & MAP GRID -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+      
+      <!-- INQUIRY FORM -->
+      <div class="glass-card p-8 sm:p-10 rounded-3xl border border-gray-800 shadow-2xl">
+        <div class="mb-6">
+          <span class="text-amber-500 font-semibold text-xs uppercase tracking-wider">Fast Response Guaranteed</span>
+          <h2 class="font-heading text-2xl sm:text-3xl font-bold text-white mt-1">Send An Inquiry</h2>
+        </div>
+
+        <form id="contact-form" class="space-y-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-gray-300 mb-1.5">Your Full Name</label>
+              <input type="text" id="contact-name" required placeholder="Marcus Vance" class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-500">
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-gray-300 mb-1.5">Email Address</label>
+              <input type="email" id="contact-email" required placeholder="marcus@example.com" class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-500">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-gray-300 mb-1.5">Phone Number</label>
+              <input type="tel" required placeholder="+1 (555) 000-0000" class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-500">
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-gray-300 mb-1.5">Topic of Inquiry</label>
+              <select id="contact-subject" class="w-full bg-gray-900 border border-gray-700 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-amber-500">
+                <option value="Vehicle Purchase">Vehicle Purchase / Availability</option>
+                <option value="Schedule Test Drive">Private Test Drive Request</option>
+                <option value="Financing or Lease">Financing & Lease Consultation</option>
+                <option value="Trade-In Appraisal">Trade-In or Selling My Car</option>
+                <option value="Consignment Request">Exotic Consignment Services</option>
+                <option value="General Question">General Showroom Question</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-gray-300 mb-1.5">Your Message / Specific Requirements</label>
+            <textarea id="contact-message" required rows="4" placeholder="Please mention any specific vehicle, delivery location, or timeline..." class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-500"></textarea>
+          </div>
+
+          <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-amber text-gray-950 font-bold text-sm hover:shadow-lg hover:shadow-amber-500/25 transition">
+            Submit Message to Concierge
+          </button>
+        </form>
+      </div>
+
+      <!-- LOCATION SHOWROOM EMBED & INFO -->
+      <div id="map" class="space-y-6">
+        <div class="glass-card rounded-3xl overflow-hidden border border-gray-800 shadow-2xl relative h-[360px]">
+          <!-- Stylized Map Frame -->
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13222.186716075424!2d-118.4116538!3d34.0736204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2bc04d6d147ab%3A0xd6c7c379fd081ed1!2sBeverly%20Hills%2C%20CA!5e0!3m2!1sen!2sus!4v1699999999999!5m2!1sen!2sus" 
+            width="100%" 
+            height="100%" 
+            style="border:0; filter: invert(90%) hue-rotate(180deg) contrast(120%);" 
+            allowfullscreen="" 
+            loading="lazy">
+          </iframe>
+          <div class="absolute bottom-4 left-4 right-4 glass-card p-4 rounded-xl border border-gray-700 flex items-center justify-between">
+            <div>
+              <div class="font-heading font-bold text-white text-sm">Velocity Beverly Hills Gallery</div>
+              <div class="text-xs text-gray-400">Valet parking & secure client garage available</div>
+            </div>
+            <a href="https://maps.google.com" target="_blank" class="px-3 py-1.5 rounded-lg bg-amber-500 text-gray-950 font-bold text-xs">
+              Get Directions
+            </a>
+          </div>
+        </div>
+
+        <!-- Concierge Perks Card -->
+        <div class="glass-card p-6 rounded-2xl border border-gray-800">
+          <h4 class="font-heading font-bold text-white text-sm mb-3">VIP Showroom Protocol</h4>
+          <ul class="space-y-2 text-xs text-gray-300">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-amber-500"></i> Complimentary private airport pick-up from LAX or Burbank</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-amber-500"></i> Private vehicle unveiling salon for closed-door inspections</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-amber-500"></i> On-site notary and immediate registration processing</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- FAQS ACCORDION -->
+    <section>
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="text-amber-500 font-semibold text-xs uppercase tracking-wider">Common Questions</span>
+        <h2 class="font-heading text-3xl font-extrabold text-white mt-1">Frequently Asked Questions</h2>
+      </div>
+
+      <div class="max-w-3xl mx-auto space-y-4">
+        
+        <!-- FAQ 1 -->
+        <div class="faq-item glass-card rounded-2xl border border-gray-800 overflow-hidden">
+          <button class="faq-trigger w-full px-6 py-4 text-left flex justify-between items-center text-sm font-bold text-white hover:text-amber-400 transition">
+            <span>How does nationwide enclosed doorstep delivery work?</span>
+            <i class="fa-solid fa-chevron-down faq-icon text-xs text-gray-400 transition transform duration-200"></i>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 text-xs text-gray-400 leading-relaxed border-t border-gray-800/60 pt-3">
+            Once acquisition documents and payment are verified, your vehicle is scheduled on a hydraulic-lift, climate-controlled enclosed carrier. We provide real-time GPS tracking and 24 hours advance notification before delivery directly into your driveway or garage.
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-item glass-card rounded-2xl border border-gray-800 overflow-hidden">
+          <button class="faq-trigger w-full px-6 py-4 text-left flex justify-between items-center text-sm font-bold text-white hover:text-amber-400 transition">
+            <span>What warranty coverage is included with my purchase?</span>
+            <i class="fa-solid fa-chevron-down faq-icon text-xs text-gray-400 transition transform duration-200"></i>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 text-xs text-gray-400 leading-relaxed border-t border-gray-800/60 pt-3">
+            Every certified vehicle comes with a complimentary 12-Month / 12,000-Mile comprehensive powertrain warranty. Extended coverage up to 5 years with bumper-to-bumper protection is available and honored at authorized franchised dealerships nationwide.
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item glass-card rounded-2xl border border-gray-800 overflow-hidden">
+          <button class="faq-trigger w-full px-6 py-4 text-left flex justify-between items-center text-sm font-bold text-white hover:text-amber-400 transition">
+            <span>Can I trade in a vehicle that still has an outstanding loan balance?</span>
+            <i class="fa-solid fa-chevron-down faq-icon text-xs text-gray-400 transition transform duration-200"></i>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 text-xs text-gray-400 leading-relaxed border-t border-gray-800/60 pt-3">
+            Yes. Our finance team will contact your existing lender to obtain the 10-day payoff balance. Any positive equity is applied directly to your new acquisition, or in case of negative equity, we can seamlessly roll it into your new financing package.
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-item glass-card rounded-2xl border border-gray-800 overflow-hidden">
+          <button class="faq-trigger w-full px-6 py-4 text-left flex justify-between items-center text-sm font-bold text-white hover:text-amber-400 transition">
+            <span>Do you accommodate out-of-state and international buyers?</span>
+            <i class="fa-solid fa-chevron-down faq-icon text-xs text-gray-400 transition transform duration-200"></i>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 text-xs text-gray-400 leading-relaxed border-t border-gray-800/60 pt-3">
+            Over 60% of our clients reside outside California. We handle reciprocal sales tax compliance, out-of-state DMV title paperwork, international customs clearance, and ocean container export logistics seamlessly.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- GLOBAL TEST DRIVE MODAL -->
+  <div id="test-drive-modal" class="fixed inset-0 z-50 modal-backdrop hidden items-center justify-center p-4">
+    <div class="glass-card max-w-lg w-full rounded-2xl p-6 sm:p-8 border border-gray-700 relative animate-fade-in">
+      <button id="close-test-drive-modal" class="absolute top-5 right-5 text-gray-400 hover:text-white text-xl">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="flex items-center gap-3 mb-5">
+        <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-500 flex items-center justify-center text-lg">
+          <i class="fa-solid fa-calendar-check"></i>
+        </div>
+        <div>
+          <h3 class="font-heading font-bold text-xl text-white">Schedule A Test Drive</h3>
+          <p class="text-xs text-gray-400">Experience your dream car on the open road</p>
+        </div>
+      </div>
+
+      <form id="test-drive-form" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-gray-300 mb-1">Vehicle of Choice</label>
+          <input type="text" id="modal-car-name" class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-amber-500" placeholder="e.g. Porsche 911 Carrera S">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-gray-300 mb-1">Your Full Name</label>
+            <input type="text" id="modal-user-name" required class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-amber-500" placeholder="John Doe">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-gray-300 mb-1">Phone Number</label>
+            <input type="tel" id="modal-phone" required class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-amber-500" placeholder="+1 (555) 000-0000">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-gray-300 mb-1">Preferred Date</label>
+            <input type="date" id="modal-date" required class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-amber-500">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-gray-300 mb-1">Preferred Time</label>
+            <select class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-amber-500">
+              <option>10:00 AM - Morning</option>
+              <option>01:00 PM - Afternoon</option>
+              <option>04:00 PM - Evening</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-gray-300 mb-1">Driver's License Status</label>
+          <div class="flex items-center gap-2 text-xs text-gray-400">
+            <input type="checkbox" required id="license-chk" class="accent-amber-500 w-4 h-4 rounded">
+            <label for="license-chk">I have a valid driver's license and am 21+ years of age</label>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-amber text-gray-950 font-bold text-sm hover:shadow-lg hover:shadow-amber-500/25 transition mt-2">
+          Confirm Test Drive Reservation
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-950 border-t border-gray-800/80 pt-16 pb-12 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-gray-800">
+        
+        <div class="lg:col-span-2 space-y-4">
+          <a href="index.html" class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-gradient-amber flex items-center justify-center text-gray-950 font-bold">
+              <i class="fa-solid fa-gauge-high"></i>
+            </div>
+            <span class="font-heading text-2xl font-bold tracking-wider text-white">VELOCITY <span class="text-amber-500">MOTORS</span></span>
+          </a>
+          <p class="text-gray-400 text-sm leading-relaxed max-w-sm">
+            Curating the finest pedigree of luxury sedans, exotic supercars, and premium electric vehicles. Certified multi-point inspection and nationwide white-glove transport.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-heading font-bold text-white text-sm uppercase tracking-wider mb-4">Inventory</h4>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li><a href="cars.html" class="hover:text-amber-400 transition">All Vehicles</a></li>
+            <li><a href="cars.html?body=Sedan" class="hover:text-amber-400 transition">Luxury Sedans</a></li>
+            <li><a href="cars.html?body=SUV" class="hover:text-amber-400 transition">Performance SUVs</a></li>
+            <li><a href="cars.html?body=Coupe" class="hover:text-amber-400 transition">Sports Coupes</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-heading font-bold text-white text-sm uppercase tracking-wider mb-4">Services</h4>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li><a href="services.html#financing" class="hover:text-amber-400 transition">Financing & Lease</a></li>
+            <li><a href="services.html#trade-in" class="hover:text-amber-400 transition">Trade-in Appraisal</a></li>
+            <li><a href="services.html#warranty" class="hover:text-amber-400 transition">Extended Warranty</a></li>
+            <li><a href="contact.html" class="hover:text-amber-400 transition">Book Test Drive</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-heading font-bold text-white text-sm uppercase tracking-wider mb-4">VIP Newsletter</h4>
+          <p class="text-xs text-gray-400 mb-3">Be first to know about private inventory releases and new arrivals.</p>
+          <form id="newsletter-form" class="space-y-2">
+            <input type="email" required placeholder="Enter your email" class="w-full bg-gray-900 border border-gray-800 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-500">
+            <button type="submit" class="w-full py-2.5 rounded-xl bg-gradient-amber text-gray-950 font-bold text-xs hover:shadow-lg transition">Subscribe</button>
+          </form>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-gray-500 gap-4">
+        <div>&copy; 2026 Velocity Motors LLC. All rights reserved. Designed with automotive passion.</div>
+        <div class="flex space-x-6">
+          <a href="#" class="hover:text-gray-400 transition">Privacy Policy</a>
+          <a href="#" class="hover:text-gray-400 transition">Terms of Sale</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/contact.js"></script>
+</body>
+</html>
